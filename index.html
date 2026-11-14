@@ -63,7 +63,7 @@ td.g,td.r,td.y{font-weight:600}
 .lg.dl{height:0;width:16px;border:0;border-top:1.5px dashed var(--tx);border-radius:0;background:none;vertical-align:3px}
 .cb-p{border:1px solid var(--bd);border-radius:10px;padding:10px 12px;margin-top:10px}
 .cb-t0{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}.cb-title{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}@media(max-width:640px){.cb-t0{flex-wrap:wrap}}
-.cb-act{display:inline-flex;gap:6px;flex-shrink:0}
+.cb-act{display:inline-flex;gap:6px;flex-shrink:0;align-items:center}
 .cb-btn{height:27px;padding:0 9px;font-size:11.5px;border-radius:6px;display:inline-flex;align-items:center;gap:5px;color:var(--mu);background:var(--bg);border:1px solid var(--bd);cursor:pointer;transition:all .15s ease}
 .cb-btn:hover{color:var(--tx);border-color:var(--bd-h);background:var(--card)}
 .cb-btn.ok{color:var(--ok);border-color:var(--ok);background:var(--okb)}
@@ -115,6 +115,9 @@ body.drop .empty-box{transform:scale(1.005)}
 }
 
 .fbar{background:var(--card);transition:box-shadow .2s ease,border-color .2s ease}
+.fbar-meta{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-top:8px;flex-wrap:wrap}
+.fbar-meta #fa{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fbar-meta .hint{flex:0 1 auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fb{display:grid;grid-template-columns:repeat(5,minmax(140px,1fr)) auto;gap:10px;align-items:end}
 @media(max-width:1080px){.fb{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}.fb .btns{grid-column:1/-1;justify-content:flex-start}}
 .fb label{display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--mu);font-weight:600;letter-spacing:.01em}
@@ -163,6 +166,18 @@ body.drop{outline:3px dashed var(--ac);outline-offset:-8px}
 .chk-lbl:hover{border-color:var(--bd-h)}
 .chk-lbl input{accent-color:var(--ac);cursor:pointer;margin:0}
 
+/* Performance Trend Table: Freeze kolom Metric di sisi kiri saat scroll horizontal */
+@media screen{
+.sc-tr{border:1px solid var(--bd);border-radius:8px;overscroll-behavior-x:contain}
+.sc-tr table{border-collapse:separate;border-spacing:0}
+.sc-tr th:first-child,.sc-tr td:first-child{position:sticky;left:0;z-index:2;background:var(--card);border-right:1px solid var(--bd);background-clip:padding-box}
+.sc-tr th:first-child{z-index:3}
+.sc-tr tr.tm td{border-right:none;background:var(--bg)}
+.sc-tr tr.tm td .tm-lbl{position:sticky;left:8px;display:inline-block}
+.sc-tr tbody tr:hover td:first-child{background:color-mix(in srgb,var(--card) 94%,var(--tx) 6%)}
+.sc-tr tbody tr.tm:hover td:first-child{background:var(--bg)}
+}
+
 /* Detail Rating Table: Lebar kolom proporsional sesuai isi rating & sticky tanpa flicker */
 .sc-top{overflow-x:auto;overflow-y:hidden;height:12px;margin-bottom:4px;max-width:100%}
 .sc-top>div{height:1px}
@@ -172,18 +187,18 @@ body.drop{outline:3px dashed var(--ac);outline-offset:-8px}
 .sc-dt thead th{position:sticky;top:0;z-index:4;background:var(--card);border-bottom:1px solid var(--bd);height:36px}
 .sc-dt tbody td{height:35px;padding:6px 8px;vertical-align:middle;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sc-dt tbody tr:hover td:not(.g):not(.r):not(.y){background:color-mix(in srgb,var(--card) 94%,var(--tx) 6%)}
-.sc-dt th:nth-child(1),.sc-dt td:nth-child(1){width:200px;min-width:200px;max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sc-dt th:nth-child(2),.sc-dt td:nth-child(2){width:270px;min-width:270px;max-width:270px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sc-dt th:nth-child(3),.sc-dt td:nth-child(3){width:88px;min-width:88px;max-width:88px}
-.sc-dt th:nth-child(4),.sc-dt td:nth-child(4){width:150px;min-width:150px;max-width:150px}
-.sc-dt th:nth-child(5),.sc-dt td:nth-child(5){width:78px;min-width:78px;max-width:78px}
-.sc-dt .w-s{width:110px;min-width:110px;max-width:110px}
-.sc-dt .w-tek{width:94px;min-width:94px;max-width:94px}
-.sc-dt .w-fsa{width:112px;min-width:112px;max-width:112px}
-.sc-dt .w-pct{width:66px;min-width:66px;max-width:66px}
+.sc-dt th:nth-child(1),.sc-dt td:nth-child(1){width:165px;min-width:165px;max-width:165px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-dt th:nth-child(2),.sc-dt td:nth-child(2){width:215px;min-width:215px;max-width:215px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sc-dt th:nth-child(3),.sc-dt td:nth-child(3){width:74px;min-width:74px;max-width:74px}
+.sc-dt th:nth-child(4),.sc-dt td:nth-child(4){width:120px;min-width:120px;max-width:120px}
+.sc-dt th:nth-child(5),.sc-dt td:nth-child(5){width:64px;min-width:64px;max-width:64px}
+.sc-dt .w-s{width:104px;min-width:104px;max-width:104px}
+.sc-dt .w-tek{width:88px;min-width:88px;max-width:88px}
+.sc-dt .w-fsa{width:106px;min-width:106px;max-width:106px}
+.sc-dt .w-pct{width:56px;min-width:56px;max-width:56px}
 @media(min-width:641px){
 .sc-dt th:nth-child(1),.sc-dt td:nth-child(1){position:sticky;left:0;background:var(--card);z-index:2;background-clip:padding-box}
-.sc-dt th:nth-child(2),.sc-dt td:nth-child(2){position:sticky;left:200px;background:var(--card);z-index:2;border-right:1px solid var(--bd);background-clip:padding-box}
+.sc-dt th:nth-child(2),.sc-dt td:nth-child(2){position:sticky;left:165px;background:var(--card);z-index:2;border-right:1px solid var(--bd);background-clip:padding-box}
 .sc-dt thead th:nth-child(1),.sc-dt thead th:nth-child(2){z-index:6}
 }
 }
@@ -354,6 +369,95 @@ body.drop{outline:3px dashed var(--ac);outline-offset:-8px}
 .app-ft b{color:var(--tx);font-weight:600}
 .app-ft .ft-ver{display:inline-flex;align-items:center;gap:6px;padding:2px 9px;border-radius:99px;background:var(--card);border:1px solid var(--bd);font-size:11.5px;font-weight:600;color:var(--tx);font-variant-numeric:tabular-nums}
 @media(max-width:600px){.app-ft{flex-direction:column;align-items:flex-start}}
+
+.mob-scroll-hint{display:none}
+/* ===== Mobile Responsive Enhancements (<= 640px & <= 420px) ===== */
+@media(max-width:640px){
+  main{padding:10px 10px 18px}
+  .brand-hd{gap:10px;align-items:flex-start}
+  .brand-logo{width:32px;height:32px;margin-top:2px}
+  h1{font-size:17.5px;line-height:1.25}
+  h2,details.sec>summary h2{font-size:14px}
+  .card{padding:11px 12px;margin-bottom:10px;border-radius:9px}
+
+  /* Empty State */
+  .empty-box{padding:28px 16px 22px;margin-top:12px}
+  .empty-ico{width:46px;height:46px}
+  .empty-box h3{font-size:16px}
+  .empty-desc{font-size:12.5px}
+  .empty-cta{width:100%;justify-content:center;padding:11px 16px}
+
+  /* Filter Bar: 2-column grid on mobile + horizontal scrollable pills nav */
+  .fb{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .fb label:first-child{grid-column:1/-1}
+  .fb .btns{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:7px}
+  .fb .btns button{justify-content:center;padding:0 10px;font-size:12.5px;height:38px}
+  .fb .btns #pr{grid-column:1/-1}
+  .csel-btn{height:38px;font-size:13px}
+  .fbar-meta{flex-direction:column;gap:4px;margin-top:7px}
+  .fbar-meta #fa{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.35}
+  .fbar-meta .hint{display:none}
+  .nav{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;margin-top:8px;padding-top:8px;gap:5px}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{flex:0 0 auto;padding:5px 11px;font-size:12px}
+  .card[id],#kp{scroll-margin-top:16px}
+
+  /* KPI Grids: 2 columns on mobile */
+  .grid,.grid.w{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:10px}
+  .k{padding:10px}
+  .k b{font-size:18.5px}
+  .k div{font-size:11.5px;line-height:1.35}
+
+  /* Section Header Controls (Search, Type, Y-Axis, Quarter, Year, Export CSV) */
+  .dt-head{flex-direction:column;align-items:stretch;gap:8px;margin-bottom:10px}
+  .dt-ctrl{display:flex;flex-wrap:wrap;gap:8px;width:100%}
+  .dt-ctrl>label{flex:1 1 100%;justify-content:space-between}
+  .dt-ctrl>label .csel-sm{flex:1;min-width:0;max-width:65%}
+  .dt-ctrl>label .csel-btn{width:100%;height:36px}
+  .dt-ctrl>#yr+.csel,.dt-ctrl .csel-sm{width:100%}
+  .dt-ctrl>.cb-btn{width:100%;justify-content:center;height:36px!important;font-size:12.5px!important}
+  .srch,.srch:focus-within{width:100%}
+  .srch input{height:38px;font-size:13.5px}
+  .chk-lbl{width:100%;justify-content:center;height:36px}
+
+  /* Session Score Chart & Quarterly Chart */
+  .cb-p{padding:9px 10px}
+  .cb-t0{flex-direction:column;align-items:stretch;gap:7px}
+  .cb-title{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.38}
+  .cb-act{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .cb-btn{justify-content:center;height:32px;font-size:11.5px;padding:0 6px;white-space:nowrap}
+  .cb-g{grid-template-columns:1fr;gap:10px}
+  .cb-sc{-webkit-overflow-scrolling:touch}
+
+  /* Rating Details & Trend Tables: readable touch scrolling */
+  .sc{-webkit-overflow-scrolling:touch}
+  .sc-dt{max-height:72vh;-webkit-overflow-scrolling:touch}
+  .sc-dt th:nth-child(1),.sc-dt td:nth-child(1){width:130px;min-width:130px;max-width:130px}
+  .sc-dt th:nth-child(2),.sc-dt td:nth-child(2){width:175px;min-width:175px;max-width:175px}
+  table{font-size:12px}
+  th,td{padding:5px 7px}
+
+  /* Custom Select Bottom-Sheet Style on Mobile */
+  .csel-pop{left:10px!important;right:10px!important;width:auto!important;max-width:none!important;border-radius:12px}
+  .csel-q{height:38px;font-size:14px}
+  .csel-list{max-height:46vh}
+  .csel-opt{padding:10px 11px;font-size:13.5px}
+
+
+  /* Mobile Table Scroll Hint */
+  .mob-scroll-hint{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mu);margin-bottom:6px;padding:4px 8px;border-radius:6px;background:var(--bg);border:1px solid var(--bd)}
+  .mob-scroll-hint svg{flex-shrink:0;color:var(--ac)}
+  .ui-tip{pointer-events:auto;padding-right:28px}
+  .ui-tip-x{position:absolute;top:6px;right:7px;background:none;border:none;color:var(--mu);font-size:15px;line-height:1;padding:2px 5px;cursor:pointer}
+
+  /* Mobile Tooltip pinned cleanly at bottom */
+  .ui-tip{left:10px!important;right:10px!important;top:auto!important;bottom:calc(10px + env(safe-area-inset-bottom,0px))!important;max-width:none!important;width:auto!important;box-shadow:0 8px 28px rgba(0,0,0,.32)}
+}
+@media(max-width:380px){
+  .fb{grid-template-columns:1fr}
+  .grid,.grid.w{grid-template-columns:1fr}
+  .cb-act{grid-template-columns:1fr}
+}
 </style>
 </head><body><main>
 <div id="ph" style="display:none"><svg class="brand-logo" width="38" height="38" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -399,26 +503,26 @@ body.drop{outline:3px dashed var(--ac);outline-offset:-8px}
 </div>
 </div>
 <div id="app" hidden>
-<div class="card noprint fbar"><div class="fb"><label>Period<select id="pd"></select></label><label>PIC Ops<select id="fo"></select></label><label>Company<select id="fc"></select></label><label>Project<select id="fj"></select></label><label>Scheme<select id="fs"></select></label><div class="btns"><button type="button" id="rs" title="Reset semua filter ke posisi awal">Reset Filter</button><button type="button" id="rb2" class="btn-danger" title="Hapus data CSV yang sedang dimuat">Clear Data</button><button type="button" class="p" id="pr">Export / Save PDF</button></div></div><div class="mu" id="fa" style="margin-top:8px"></div><div class="mu" id="note" style="margin-top:4px;color:var(--bad)"></div><div class="mu hint" style="margin-top:4px">Tips PDF: Klik <b>Export / Save PDF</b>, pilih Destination <i>Save as PDF</i>, Layout <i>Landscape</i>, dan centang <i>Background graphics</i> (disarankan menggunakan Chrome atau Edge).</div>
+<div class="card noprint fbar"><div class="fb"><label>Period<select id="pd"></select></label><label>PIC Ops<select id="fo"></select></label><label>Company<select id="fc"></select></label><label>Project<select id="fj"></select></label><label>Scheme<select id="fs"></select></label><div class="btns"><button type="button" id="rs" title="Reset semua filter ke posisi awal">Reset Filter</button><button type="button" id="rb2" class="btn-danger" title="Hapus data CSV yang sedang dimuat">Clear Data</button><button type="button" class="p" id="pr">Export / Save PDF</button></div></div><div class="fbar-meta"><div class="mu" id="fa"></div><div class="mu hint" title="Tips PDF: Klik Export / Save PDF, pilih Destination Save as PDF, Layout Landscape, dan centang Background graphics (disarankan menggunakan Chrome atau Edge)."><b>Tips PDF:</b> Pilih <i>Save as PDF</i>, <i>Landscape</i>, &amp; centang <i>Background graphics</i> (Chrome/Edge).</div></div><div class="mu" id="note" style="margin-top:4px;color:var(--bad)"></div>
 <nav class="nav" aria-label="Navigasi Cepat"><a href="#kp" class="act">Overview</a><a href="#s-ct">Corporate Training</a><a href="#s-pb">Pro Bono</a><a href="#s-ch">Session Chart</a><a href="#s-dt">Rating Details</a><a href="#s-at">Needs Attention</a><a href="#s-qc">Quarterly Chart</a><a href="#s-tr">Performance Trend</a><a href="#s-dq">Data Quality</a><a href="#s-gd">Guidelines</a></nav></div>
 <div class="card warn noprint" id="warn" hidden></div>
 <div class="grid" id="kp"></div>
 <div class="card" id="s-ct"><h2>Corporate Training</h2><div class="grid w" id="cc" style="margin:0"></div></div>
 <div class="card" id="s-pb"><h2>Pro Bono</h2><div class="grid w" id="cp" style="margin:0"></div></div>
-<details class="card sec" id="s-ch" open><summary><h2>Session Score Chart <span id="ct-p" class="prt-only mu" style="font-weight:400"></span></h2></summary><div class="dt-head"><div style="flex:1;min-width:260px"><div class="mu"><span class="scr-only">Perbandingan skor per sesi (Interaktif Kelas, Moderator, dan Teknis Kelas; khusus Pro Bono hanya Moderator &amp; Teknis Kelas) untuk tiap Client &amp; Project sesuai filter aktif. <span class="lg bl"></span>Biru = Achieved (≥ target) · <span class="lg rd"></span>Merah = Not Achieved · <span class="lg dl"></span>Garis putus-putus = Target.</span><span class="prt-only">Skor per sesi tiap Client &amp; Project (Pro Bono: Moderator &amp; Teknis Kelas). <span class="lg bl"></span>Biru = Achieved (≥ target) · <span class="lg rd"></span>Merah = Not Achieved · <span class="lg dl"></span>Garis putus-putus = Target.</span></div></div><div class="dt-ctrl noprint"><label class="mu" style="display:inline-flex;align-items:center;gap:7px">Type<select id="ct"><option value="">Semua (CT &amp; Pro Bono)</option><option value="ct">Corporate Training (CT)</option><option value="pb">Pro Bono</option></select></label><label class="mu" style="display:inline-flex;align-items:center;gap:7px">Y-Axis<select id="ys"><option value="z" selected>Zoom (fokus area skor)</option><option value="f">Full (skala 0–5)</option></select></label></div></div><div id="cb"></div></details>
-<details class="card sec" id="s-dt" open><summary><h2>Rating Details</h2></summary><div class="dt-head"><div><div class="mu">Dikelompokkan per Client &amp; Project — klik baris project untuk membuka rincian per sesi. <span class="lg g"></span>Hijau = Semua sesi achieved · <span class="lg y"></span>Kuning = Average achieved, ada sesi di bawah target · <span class="lg r"></span>Merah = Average di bawah target.</div></div><div class="dt-ctrl noprint"><div class="srch"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="q" placeholder="Cari client atau project..." aria-label="Cari client atau project"><button type="button" id="qc" title="Hapus pencarian (Esc)" aria-label="Hapus pencarian" hidden>&times;</button></div><label class="mu chk-lbl"><input type="checkbox" id="sd"> Expand all sessions</label></div></div><h3>Corporate Training</h3><div class="sc-top noprint" data-for="wrap-pg" hidden><div></div></div><div class="sc sc-dt" id="wrap-pg"><table id="pg"></table></div><h3 style="margin-top:16px">Pro Bono</h3><div class="sc-top noprint" data-for="wrap-pp" hidden><div></div></div><div class="sc sc-dt" id="wrap-pp"><table id="pp"></table></div></details>
-<details class="card sec" id="s-at" open><summary><h2>Projects Need Attention</h2> <span class="mu noprint" id="at-sum"></span></summary><div class="mu" style="margin-bottom:6px">Daftar project dengan metrik di bawah target pada periode aktif. <span class="scr-only">Klik nama project untuk langsung memfilter dan membuka grafik sesi atau rincian ratingnya.</span></div><div class="sc" id="at"></div></details>
+<details class="card sec" id="s-ch" open><summary><h2>Session Score Chart <span id="ct-p" class="prt-only mu" style="font-weight:400"></span></h2></summary><div class="dt-head"><div style="flex:1;min-width:260px"><div class="mu"><span class="scr-only">Perbandingan skor per sesi (Interactive, Moderator, dan Technical; khusus Pro Bono hanya Moderator &amp; Technical) untuk tiap Client &amp; Project sesuai filter aktif. <span class="lg bl"></span>Biru = Achieved (≥ target) · <span class="lg rd"></span>Merah = Not Achieved · <span class="lg dl"></span>Garis putus-putus = Target.</span><span class="prt-only">Skor per sesi tiap Client &amp; Project (Pro Bono: Moderator &amp; Technical). <span class="lg bl"></span>Biru = Achieved (≥ target) · <span class="lg rd"></span>Merah = Not Achieved · <span class="lg dl"></span>Garis putus-putus = Target.</span></div></div><div class="dt-ctrl noprint"><label class="mu" style="display:inline-flex;align-items:center;gap:7px">Type<select id="ct"><option value="">Semua (CT &amp; Pro Bono)</option><option value="ct">Corporate Training (CT)</option><option value="pb">Pro Bono</option></select></label><label class="mu" style="display:inline-flex;align-items:center;gap:7px">Y-Axis<select id="ys"><option value="z" selected>Zoom (fokus area skor)</option><option value="f">Full (skala 0–5)</option></select></label></div></div><div id="cb"></div></details>
+<details class="card sec" id="s-dt" open><summary><h2>Rating Details</h2></summary><div class="dt-head"><div><div class="mu">Dikelompokkan per Client &amp; Project — klik baris project untuk membuka rincian per sesi. <span class="lg g"></span>Hijau = Semua sesi achieved · <span class="lg y"></span>Kuning = Average achieved, ada sesi di bawah target · <span class="lg r"></span>Merah = Average di bawah target.</div></div><div class="dt-ctrl noprint"><div class="srch"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="q" placeholder="Cari client atau project..." aria-label="Cari client atau project"><button type="button" id="qc" title="Hapus pencarian (Esc)" aria-label="Hapus pencarian" hidden>&times;</button></div><label class="mu chk-lbl"><input type="checkbox" id="sd"> Expand all sessions</label></div></div><h3>Corporate Training</h3><div class="mob-scroll-hint noprint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="15 8 19 12 15 16"/></svg><span>Geser tabel ke samping untuk melihat seluruh kolom</span></div><div class="sc-top noprint" data-for="wrap-pg" hidden><div></div></div><div class="sc sc-dt" id="wrap-pg"><table id="pg"></table></div><h3 style="margin-top:16px">Pro Bono</h3><div class="mob-scroll-hint noprint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="15 8 19 12 15 16"/></svg><span>Geser tabel ke samping untuk melihat seluruh kolom</span></div><div class="sc-top noprint" data-for="wrap-pp" hidden><div></div></div><div class="sc sc-dt" id="wrap-pp"><table id="pp"></table></div></details>
+<details class="card sec" id="s-at" open><summary><h2>Projects Need Attention</h2> <span class="mu noprint" id="at-sum"></span></summary><div class="dt-head" style="margin-bottom:6px"><div class="mu" style="flex:1;min-width:220px">Daftar project dengan metrik di bawah target pada periode aktif. <span class="scr-only">Klik nama project untuk langsung memfilter dan membuka grafik sesi atau rincian ratingnya.</span></div></div><div class="mob-scroll-hint noprint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="15 8 19 12 15 16"/></svg><span>Geser tabel ke samping untuk melihat seluruh kolom</span></div><div class="sc" id="at"></div></details>
 <details class="card sec" id="s-qc" open><summary><h2>Quarterly Achievement Chart (3 Months)</h2></summary><div class="dt-head"><div style="flex:1;min-width:260px"><div class="mu">Perbandingan <b>% Achieved</b> seluruh metrik pada 3 bulan dalam kuartal terpilih untuk <b>Corporate Training</b> dan <b>Pro Bono</b>, dibedakan dengan <b>3 warna bar</b> per bulan.</div></div><div class="dt-ctrl noprint"><label class="mu" style="display:inline-flex;align-items:center;gap:7px">Quarter<select id="qq"></select></label></div></div><div id="qcb"></div></details>
-<details class="card sec" id="s-tr" open><summary><h2>Performance Trend (Monthly, Quarterly &amp; YTD)</h2></summary><div class="dt-head"><div style="flex:1;min-width:260px"><div class="mu">Atas: Avg · Bawah: rasio &amp; % achieved. <span class="lg g"></span>Hijau = Semua achieved · <span class="lg y"></span>Kuning = Avg achieved, ada sesi/project belum · <span class="lg r"></span>Merah = Avg di bawah target.</div></div><div class="dt-ctrl noprint"><select id="yr" aria-label="Pilih tahun"></select></div></div><div class="sc"><table id="mx"></table></div></details>
+<details class="card sec" id="s-tr" open><summary><h2>Performance Trend (Monthly, Quarterly &amp; YTD)</h2></summary><div class="dt-head"><div style="flex:1;min-width:260px"><div class="mu">Atas: Avg · Bawah: rasio &amp; % achieved. <span class="lg g"></span>Hijau = Semua achieved · <span class="lg y"></span>Kuning = Avg achieved, ada sesi/project belum · <span class="lg r"></span>Merah = Avg di bawah target.</div></div><div class="dt-ctrl noprint"><select id="yr" aria-label="Pilih tahun"></select></div></div><div class="mob-scroll-hint noprint"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="15 8 19 12 15 16"/></svg><span>Geser tabel ke samping untuk melihat seluruh kolom</span></div><div class="sc sc-tr"><table id="mx"></table></div></details>
 <details class="card sec noprint" id="s-dq"><summary><h2>Data Quality Summary</h2><span id="dq-sum"></span> <span class="mu">· klik untuk detail</span></summary><div class="mu gd-body" id="dq"></div></details>
 <details class="card sec" id="s-gd"><summary><h2>Calculation Rules &amp; Guidelines</h2> <span class="mu noprint">· target benchmark &amp; aturan perhitungan</span></summary><div class="mu gd-body">
-• <b>Session-Level Metrics:</b> Interaktif Kelas, Moderator (CM), dan Teknis Kelas dievaluasi per sesi. Sesi dinyatakan <i>achieved</i> jika skornya mencapai atau melebihi target.<br>
+• <b>Session-Level Metrics:</b> Interactive, Moderator, dan Technical dievaluasi per sesi. Sesi dinyatakan <i>achieved</i> jika skornya mencapai atau melebihi target.<br>
 • <b>Project-Monthly Metrics:</b> Final Score A&amp;G, SFC, CSAT, dan NPS dirata-ratakan dan dievaluasi per kombinasi unik <i>Company + Project</i> dalam satu bulan.<br>
 • <b>Cell Color Indicators (Details &amp; Trend):</b> Hijau = Semua sesi/project achieved; Kuning = Average achieved, namun masih ada sesi/project di bawah target; Merah = Average di bawah target.<br>
-• <b>Quarterly Achievement Chart:</b> Menampilkan perbandingan <b>% Achieved</b> seluruh metrik pada 3 bulan dalam kuartal terpilih (untuk Corporate Training dan Pro Bono) dengan <b>3 warna bar berbeda</b> per bulan<span class="scr-only">, lengkap dengan tombol <b>Copy Image</b> / <b>PNG</b></span>.<br>
-• <b>Session Score Chart:</b> Menampilkan skor per sesi untuk tiap Client &amp; Project (Interaktif Kelas, Moderator, dan Teknis Kelas; khusus Pro Bono hanya Moderator &amp; Teknis Kelas). Bar biru = achieved, merah = not achieved, dan sesi yang belum dinilai tidak ditampilkan.<span class="scr-only"> Gunakan filter <b>Type</b> untuk memilah CT/Pro Bono, <b>Y-Axis</b> untuk mengatur skala grafik (<i>Zoom</i> atau <i>Full</i>), serta tombol <b>Copy Image</b> / <b>PNG</b> di kanan atas kartu untuk menyalin grafik ke slide presentasi.</span><br>
-• <b>Target Corporate Training:</b> Interaktif Kelas 4.50 · Moderator (CM) 4.60 · Teknis Kelas 4.50 · Final Score A&amp;G 80% · SFC 86% · CSAT 91% · NPS 78%.<br>
-• <b>Target Pro Bono:</b> Moderator (CM) 4.50 · Teknis Kelas 4.50 · CSAT 90% · NPS 75% <i>(Interaktif Kelas, Final Score A&amp;G, dan SFC tidak dihitung untuk Pro Bono)</i>.<br>
+• <b>Quarterly Achievement Chart:</b> Menampilkan perbandingan <b>% Achieved</b> seluruh metrik pada 3 bulan dalam kuartal terpilih (untuk Corporate Training dan Pro Bono) dengan <b>3 warna bar berbeda</b> per bulan<span class="scr-only">, lengkap dengan tombol <b>Copy Image</b> dan <b>PNG</b> untuk menyalin atau mengunduh grafik</span>.<br>
+• <b>Session Score Chart:</b> Menampilkan skor per sesi untuk tiap Client &amp; Project (Interactive, Moderator, dan Technical; khusus Pro Bono hanya Moderator &amp; Technical). Bar biru = achieved, merah = not achieved, dan sesi yang belum dinilai tidak ditampilkan.<span class="scr-only"> Gunakan filter <b>Type</b> untuk memilah CT/Pro Bono, <b>Y-Axis</b> untuk mengatur skala grafik (<i>Zoom</i> atau <i>Full</i>), serta tombol <b>Copy Image</b> dan <b>PNG</b> di kanan atas kartu untuk menyalin atau mengunduh gambar grafik.</span><br>
+• <b>Target Corporate Training:</b> Interactive 4.50 · Moderator 4.60 · Technical 4.50 · Final Score A&amp;G 80% · SFC 86% · CSAT 91% · NPS 78%.<br>
+• <b>Target Pro Bono:</b> Moderator 4.50 · Technical 4.50 · CSAT 90% · NPS 75% <i>(Interactive, Final Score A&amp;G, dan SFC tidak dihitung untuk Pro Bono)</i>.<br>
 • <b>Final Score A&amp;G:</b> Mengacu pada kolom <i>Achievement</i> (persentase kelulusan assessment peserta, mis. 19 dari 24 peserta = 79.17%), dengan target minimal 80%.<br>
 • <b>Unrated &amp; Parallel Sessions:</b> Sesi yang belum dinilai tetap dihitung dalam <i>Total Sessions</i> dengan label “unrated”, namun dikecualikan dari pembagi persentase <i>achieved</i>. Sesi bernomor sama di tanggal berbeda dihitung sebagai sesi terpisah.</div></details>
 </div><footer class="app-ft noprint">
@@ -426,14 +530,14 @@ body.drop{outline:3px dashed var(--ac);outline-offset:-8px}
   <div class="ft-ver">v1.3 · Update 14 Nov 2026</div>
 </footer>
 </main><script>
-let PT='Product Operations B2B Performance Report',T0='';const SK='ops_b2b_csv_v2',$=s=>document.querySelector(s),ID=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'],MNm=['january','february','march','april','may','june','july','august','september','october','november','december'],MNi=['januari','februari','maret','april','mei','juni','juli','agustus','september','oktober','november','desember'];
+let PT='Product Operations B2B Performance Report',T0='',DEF_PD='';const SK='ops_b2b_csv_v2',$=s=>document.querySelector(s),ID=['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'],MNm=['january','february','march','april','may','june','july','august','september','october','november','december'],MNi=['januari','februari','maret','april','mei','juni','juli','agustus','september','oktober','november','desember'];
 // ===== TARGET (ubah di sini). null = tidak dihitung =====
 const CORP={int:4.5,mod:4.6,tek:4.5,fsa:80,sfc:86,csat:91,nps:78},PB={int:null,mod:4.5,tek:4.5,fsa:null,sfc:null,csat:90,nps:75};
 // [kode, label, skala, level: s=per sesi, p=per project-bulan, kelas lebar kolom]
-const MET=[['int','Interaktif Kelas',5,'s','w-s'],['mod','Moderator (CM)',5,'s','w-s'],['tek','Teknis Kelas',5,'s','w-tek'],['fsa','Final Score A&G',100,'p','w-fsa'],['sfc','SFC',100,'p','w-pct'],['csat','CSAT',100,'p','w-pct'],['nps','NPS',100,'p','w-pct']];
+const MET=[['int','Interactive',5,'s','w-s'],['mod','Moderator',5,'s','w-s'],['tek','Technical',5,'s','w-tek'],['fsa','Final Score A&G',100,'p','w-fsa'],['sfc','SFC',100,'p','w-pct'],['csat','CSAT',100,'p','w-pct'],['nps','NPS',100,'p','w-pct']];
 const D={company:/^company/,project:/^project/,scheme:/^scheme/,ops:/^pic ops/,rm:/^running month/,date:/^date/,int:/^interaktif/,mod:/^moderator/,mn:/^nama moderator/,tek:/^teknis/,fsa:/^achievement/,type:/^type$/,ses:/^session$/,sfc:/^student final/,csat:/^csat/,nps:/^nps/};
 let R=[],MO=[],YRS=[],BAD={},DROP=0,FIX=[];
-function parse(t){t=String(t||'').replace(/^\uFEFF/,'');const ls=t.split(/\r?\n/),h0=ls.find(l=>/company/i.test(l))||ls[0]||'',d=[',',';','\t'].reduce((a,c)=>h0.split(c).length>h0.split(a).length?c:a,',');let r=[],w=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==d){w.push(f);f=''}else if(c=='\n'||c=='\r'){if(c=='\r'&&t[i+1]=='\n')i++;w.push(f);r.push(w);w=[];f=''}else f+=c}if(f||w.length){w.push(f);r.push(w)}return r}
+function parse(t){t=String(t||'').replace(/^\uFEFF/,'');const ls=t.split(/\r?\n/),h0=(ls.find(l=>/company/i.test(l))||ls[0]||'').replace(/"[^"]*"/g,''),d=[',',';','\t'].reduce((a,c)=>h0.split(c).length>h0.split(a).length?c:a,',');let r=[],w=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==d){w.push(f);f=''}else if(c=='\n'||c=='\r'){if(c=='\r'&&t[i+1]=='\n')i++;w.push(f);r.push(w);w=[];f=''}else f+=c}if(f||w.length){w.push(f);r.push(w)}return r}
 function num(v,sc,k){if(v==null)return null;let s=String(v).trim().replace('%','').replace(/^\.+/,'');if(!/^-?\d+([.,]\d+)?$/.test(s))return null;const x=parseFloat(s.replace(',','.'));return sc==5?(x>0&&x<=5?x:null):(k=='nps'?(x>=-100&&x<=100?x:null):(x>=0&&x<=100?x:null))}
 const MNs=['jan','feb','mar','apr','mei','jun','jul','agu','sep','okt','nov','des'],MNse=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];function mk(r){const m=(r.rm||'').trim().toLowerCase().match(/^([a-z]+)[\s-]+(\d{4})/);if(m){const w=m[1]=='sept'?'sep':m[1],i=Math.max(MNm.indexOf(w),MNi.indexOf(w),MNs.indexOf(w),MNse.indexOf(w));if(i>=0)return m[2]+'-'+String(i+1).padStart(2,'0')}const d=(r.date||'').match(/^(\d{4})-(\d{2})/);return d?d[1]+'-'+d[2]:null}
 const lab=m=>ID[+m.slice(5)-1]+' '+m.slice(0,4),esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
@@ -442,13 +546,14 @@ const fv=(v,s)=>v==null?'–':s==5?v.toFixed(2):v.toFixed(1)+'%';
 const normSc=v=>{const s=String(v||'').trim().toLowerCase();return s=='online'?'Online':s=='offline'?'Offline':s=='hybrid'?'Hybrid':''};
 function load(txt){const rows=parse(txt),hi=rows.findIndex(r=>r.some(c=>/^company/i.test(c.trim())));if(hi<0){const em='Kolom “Company” tidak ditemukan. Pastikan file CSV berasal dari tab Tolok Ukur (B2B Coordination).';$('#msg').textContent='· '+em;if($('#empty-err')){$('#empty-err').textContent=em;$('#empty-err').hidden=false}return false}
 const h=rows[hi].map(c=>c.toLowerCase().replace(/\s+/g,' ').trim()),ix={};for(const k in D)ix[k]=h.findIndex(x=>D[k].test(x));
-const LBL={project:'Project',ops:'PIC Ops',scheme:'Scheme',type:'Type (Pro Bono marker)',ses:'Session',mn:'Nama Moderator',int:'Interaktif Kelas',mod:'Moderator',tek:'Teknis Kelas',fsa:'Achievement (Final Score A&G)',sfc:'SFC',csat:'CSAT',nps:'NPS'},missC=Object.keys(LBL).filter(k=>ix[k]<0).map(k=>LBL[k]);
-let RMFB=[];R=[];DROP=0;FIX=[];BAD={};MET.forEach(m=>BAD[m[0]]=0);
-for(const r of rows.slice(hi+1)){const o={};for(const k in ix)o[k]=ix[k]>=0?(r[ix[k]]||'').trim():'';o.co=o.company.replace(/\s+/g," ");o.pj=o.project.replace(/\s+/g," ");o.sc=normSc(o.scheme);if(!o.co)continue;{const dm=o.date.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})/);if(dm)o.date=dm[3]+'-'+dm[2].padStart(2,'0')+'-'+dm[1].padStart(2,'0')}const rmOk=/^([a-z]+)[\s-]+(\d{4})$/i.test((o.rm||'').trim())&&mk({rm:o.rm,date:''});o.mo=mk(o);if(!o.mo){DROP++;continue}if(!rmOk)RMFB.push(o.co+' – '+o.pj+' ('+(o.rm||'kosong')+' → '+o.mo+')');
+const LBL={project:'Project',ops:'PIC Ops',scheme:'Scheme',type:'Type (Pro Bono marker)',ses:'Session',mn:'Nama Moderator',int:'Interactive',mod:'Moderator',tek:'Technical',fsa:'Achievement (Final Score A&G)',sfc:'SFC',csat:'CSAT',nps:'NPS'},missC=Object.keys(LBL).filter(k=>ix[k]<0).map(k=>LBL[k]);
+let RMFB=[];R=[];DROP=0;FIX=[];BAD={};MET.forEach(m=>BAD[m[0]]=0);let rIdx=hi+1;
+for(const r of rows.slice(hi+1)){rIdx++;const o={_row:rIdx};for(const k in ix)o[k]=ix[k]>=0?(r[ix[k]]||'').trim():'';o.co=o.company.replace(/\s+/g," ");o.pj=o.project.replace(/\s+/g," ");o.sc=normSc(o.scheme);if(!o.co)continue;{const dm=o.date.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})/);if(dm)o.date=dm[3]+'-'+dm[2].padStart(2,'0')+'-'+dm[1].padStart(2,'0')}const rmOk=/^([a-z]+)[\s-]+(\d{4})$/i.test((o.rm||'').trim())&&mk({rm:o.rm,date:''});o.mo=mk(o);if(!o.mo){DROP++;continue}if(!rmOk)RMFB.push(o.co+' – '+o.pj+' ('+(o.rm||'kosong')+' → '+o.mo+')');
 MET.forEach(([k,,s])=>{o[k+'_']=num(o[k],s,k);if(o[k]&&o[k]!='-'&&o[k+'_']==null)BAD[k]++;if(/^\./.test(o[k]||'')&&o[k+'_']!=null)FIX.push(o[k]+' ('+o.co+', '+o.mo+')')});o.mn=o.mn.replace(/\s+/g,' ');R.push(o)}
+{const pickCanon=arr=>{const m=new Map();arr.forEach(s=>{const k=s.toLowerCase();if(!m.has(k))m.set(k,{best:s,cnt:new Map()});const e=m.get(k),c=(e.cnt.get(s)||0)+1;e.cnt.set(s,c);if(c>(e.cnt.get(e.best)||0))e.best=s});return m};const coC=pickCanon(R.map(r=>r.co)),pjC=new Map();R.forEach(r=>{r.co=coC.get(r.co.toLowerCase()).best;const pk=r.co.toLowerCase()+'|'+r.pj.toLowerCase();if(!pjC.has(pk))pjC.set(pk,{best:r.pj,cnt:new Map()});const e=pjC.get(pk),c=(e.cnt.get(r.pj)||0)+1;e.cnt.set(r.pj,c);if(c>(e.cnt.get(e.best)||0))e.best=r.pj});R.forEach(r=>{r.pj=pjC.get(r.co.toLowerCase()+'|'+r.pj.toLowerCase()).best})}
 MO=[...new Set(R.map(r=>r.mo))].sort();YRS=[...new Set(MO.map(m=>m.slice(0,4)))];if(!MO.length){const em='Tidak ditemukan baris data sesi yang valid pada file CSV ini.';$('#msg').textContent='· '+em;if($('#empty-err')){$('#empty-err').textContent=em;$('#empty-err').hidden=false}return false}
 $('#msg').textContent='· '+R.length+' sesi dimuat ('+MO.length+' bulan) — klik untuk ganti file';if($('#empty-err'))$('#empty-err').hidden=true;$('#empty').hidden=true;$('#up').hidden=false;$('#app').hidden=false;$('#up').open=false;{const wp=[],nb=MET.reduce((a,m)=>a+BAD[m[0]],0);if(missC.length)wp.push('<b>Kolom berikut tidak ditemukan</b> — '+esc(missC.join(', '))+'. Metrik terkait akan kosong. Pastikan nama kolom di sheet tidak berubah.');if(DROP)wp.push('<b>'+DROP+' baris dilewati</b> karena format Running Month dan Date tidak valid (gunakan format seperti “October 2026”/“Oktober 2026” atau yyyy-mm-dd / dd/mm/yyyy).');if(nb)wp.push('<b>'+nb+' nilai tidak valid diabaikan</b> (bukan angka atau di luar rentang skala); detailnya dapat dilihat di bagian Data Quality Summary.');$('#warn').hidden=!wp.length;$('#warn').innerHTML=wp.length?'<b>Perhatian:</b><br>'+wp.map(x=>'• '+x).join('<br>'):''}
-const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-1);const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'),cur=MO.includes(k)?k:MO[MO.length-1];
+const defM=()=>{const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-1);const k=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');return MO.includes(k)?k:MO[MO.length-1]},cur=defM();DEF_PD='m:'+cur;
 const q=[...new Set(R.map(r=>r.mo.slice(0,4)+'-'+Math.ceil(+r.mo.slice(5)/3)))].sort().reverse();
 $('#pd').innerHTML='<optgroup label="Monthly">'+[...MO].reverse().map(m=>`<option value="m:${m}">${lab(m)}</option>`).join('')+'</optgroup><optgroup label="Quarterly">'+q.map(x=>`<option value="q:${x}">Q${x.slice(-1)} ${x.slice(0,4)}</option>`).join('')+'</optgroup><optgroup label="YTD">'+[...YRS].reverse().map(v=>`<option value="y:${v}">YTD ${v}</option>`).join('')+'</optgroup>';
 $('#pd').value='m:'+cur;const curQ=cur.slice(0,4)+'-'+Math.ceil(+cur.slice(5)/3);$('#qq').innerHTML=q.map(x=>`<option value="${x}">Q${x.slice(-1)} ${x.slice(0,4)}</option>`).join('');$('#qq').value=q.includes(curQ)?curQ:q[0];fillF(0);$('#yr').innerHTML=[...YRS].reverse().map(v=>`<option>${v}</option>`).join('');$('#yr').value=cur.slice(0,4);
@@ -460,18 +565,20 @@ function prevp(p){const[t,v]=p.split(':');if(t=='m'){let[y,m]=v.split('-').map(N
 const pm=()=>pmonths($('#pd').value),ops=r=>r.ops||'(kosong)',scm=r=>r.sc||'(kosong)',u=a=>[...new Set(a)].sort();
 const ea=x=>esc(x).replace(/"/g,'&quot;');
 function opt(el,vals,all){const c=el.value;el.innerHTML=`<option value="">${all}</option>`+vals.map(v=>`<option>${esc(v)}</option>`).join('');const ok=!c||vals.includes(c);el.value=ok?c:'';return ok}
-function fillF(lv){const b=R.filter(r=>pm().includes(r.mo)),lost=[];if(lv<1&&!opt($('#fo'),u(b.map(ops)),'Semua PIC Ops'))lost.push('PIC Ops');
-const b1=b.filter(r=>!$('#fo').value||ops(r)==$('#fo').value);if(lv<2&&!opt($('#fc'),u(b1.map(r=>r.co)),'Semua Company'))lost.push('Company');
-const fc=$('#fc').value,b2=b1.filter(r=>!fc||r.co==fc),keys=u(b2.map(r=>r.co+'¦'+r.pj)),c=$('#fj').value;
+function setDefPd(){if(!DEF_PD)return;const pv=DEF_PD,py=pv.slice(2,6);$('#pd').value=pv;if([...$('#yr').options].some(o=>o.value==py))$('#yr').value=py;if(pv.startsWith('q:'))$('#qq').value=pv.slice(2);else if(pv.startsWith('m:')){const m=pv.slice(2),qv=m.slice(0,4)+'-'+Math.ceil(+m.slice(5)/3);if([...$('#qq').options].some(o=>o.value==qv))$('#qq').value=qv}}
+function fillF(lv){let b=R.filter(r=>pm().includes(r.mo)),lost=[];if(lv<1&&!opt($('#fo'),u(b.map(ops)),'Semua PIC Ops'))lost.push('PIC Ops');
+let b1=b.filter(r=>!$('#fo').value||ops(r)==$('#fo').value);if(lv<2&&!opt($('#fc'),u(b1.map(r=>r.co)),'Semua Company'))lost.push('Company');
+let fc=$('#fc').value,b2=b1.filter(r=>!fc||r.co==fc),keys=u(b2.map(r=>r.co+'¦'+r.pj)),c=$('#fj').value;
 $('#fj').innerHTML='<option value="">Semua Project</option>'+keys.map(k=>{const[co,pj]=k.split('¦');return `<option value="${ea(k)}">${esc(fc?pj:co+' – '+pj)}</option>`}).join('');
 if(c&&!keys.includes(c))lost.push('Project');$('#fj').value=keys.includes(c)?c:'';
-const j=$('#fj').value.split('¦'),b3=b2.filter(r=>!$('#fj').value||(r.co==j[0]&&r.pj==j[1]));
+let j=$('#fj').value.split('¦'),b3=b2.filter(r=>!$('#fj').value||(r.co==j[0]&&r.pj==j[1]));
 const scOrd=['Offline','Online','Hybrid'],scVals=u(b3.map(scm)).sort((a,b)=>(scOrd.indexOf(a)+1||99)-(scOrd.indexOf(b)+1||99)||a.localeCompare(b,'id'));if(lv<4&&!opt($('#fs'),scVals,'Semua Scheme'))lost.push('Scheme');
-$('#note').textContent=lost.length?'Filter '+lost.join(', ')+' otomatis di-reset ke “Semua” karena tidak tersedia pada kombinasi periode atau filter aktif.':''}
+if(lost.length){setDefPd();['fo','fc','fj','fs','ct'].forEach(i=>$('#'+i).value='');$('#q').value='';$('#qc').hidden=true;fillF(0);$('#note').textContent='';return}
+$('#note').textContent=''}
 const fr=ms=>{const j=$('#fj').value.split('¦');return R.filter(r=>ms.includes(r.mo)&&(!$('#fo').value||ops(r)==$('#fo').value)&&(!$('#fc').value||r.co==$('#fc').value)&&(!$('#fj').value||(r.co==j[0]&&r.pj==j[1]))&&(!$('#fs').value||scm(r)==$('#fs').value))};
 function stats(rows){const o={};MET.forEach(([k,,s,lv])=>{let it=[];
 if(lv=='s')rows.forEach(r=>{const v=r[k+'_'],t=tg(r,k);if(v!=null&&t!=null)it.push([v,t])});
-else{const m={};rows.forEach(r=>{const v=r[k+'_'],t=tg(r,k);if(v!=null&&t!=null){const x=r.co+'|'+r.pj+'|'+r.mo;(m[x]=m[x]||{v:[],t}).v.push(v)}});it=Object.values(m).map(x=>[x.v.reduce((a,b)=>a+b,0)/x.v.length,x.t])}
+else{const m={};rows.forEach(r=>{const v=r[k+'_'],t=tg(r,k);if(v!=null&&t!=null){const x=cKey(r)+'|'+r.mo;(m[x]=m[x]||{v:[],t}).v.push(v)}});it=Object.values(m).map(x=>[x.v.reduce((a,b)=>a+b,0)/x.v.length,x.t])}
 const n=it.length,a=it.filter(x=>x[0]+1e-9>=x[1]).length;o[k]={n,a,avg:n?it.reduce((z,x)=>z+x[0],0)/n:null,p:n?100*a/n:null}});return o}
 const card=(m,S,P,T,lb)=>{const[k,l,s,lv]=m,x=S[k],pv=P?P[k].avg:null,dp=s==5?2:1,d=x.avg!=null&&pv!=null?Number(x.avg.toFixed(dp))-Number(pv.toFixed(dp)):null,un=lv=='s'?'sesi':'project';
 return `<div class="k"><span class="mu">${l}</span><b>${x.p==null?'–':x.p.toFixed(1)+'%'}</b><div>${x.a}/${x.n} ${un} achieved</div><div class="mu">Avg ${fv(x.avg,s)} · Target ${fv(T[k],s)}${d==null?'':' · '+(d>=0?'▲ ':'▼ ')+Math.abs(d).toFixed(dp)+(s==100?' pt':'')+' vs '+lb}</div></div>`};
@@ -479,17 +586,17 @@ const grp=(a,fn)=>{const m={};a.forEach(r=>{const k=fn(r);(m[k]=m[k]||[]).push(r
 const st3=(x,t)=>x.a==x.n?'g':(t!=null&&x.avg+1e-9>=t?'y':'r');
 const cs=(x,s,lv,w,t)=>x.n==0?`<td class="n ${w}">–</td>`:lv=='s'?`<td class="n ${w} ${st3(x,t)}">${x.a}/${x.n} · ${fv(x.avg,s)}</td>`:`<td class="n ${w} ${st3(x,t)}">${fv(x.avg,s)}</td>`;
 const TY=[['Corporate Training',CORP,r=>!pb(r),'c'],['Pro Bono',PB,pb,'p']];
-const rated=r=>r.int_!=null||r.mod_!=null||r.tek_!=null,so=r=>{const n=parseFloat(r.ses);return isNaN(n)?1e9:n},fd=d=>{const m=(d||'').match(/^(\d{4})-(\d{2})-(\d{2})/);return m?(+m[3])+' '+ID[+m[2]-1]:''};
+const cKey=r=>r.co.toLowerCase()+'|'+r.pj.toLowerCase(),ratedSes=r=>r.int_!=null||r.mod_!=null||r.tek_!=null,ratedPm=r=>MET.some(m=>m[3]=='p'&&tg(r,m[0])!=null&&r[m[0]+'_']!=null),ratedAny=r=>ratedSes(r)||ratedPm(r),so=r=>{const n=parseFloat(r.ses);return isNaN(n)?1e9:n},fd=d=>{const m=(d||'').match(/^(\d{4})-(\d{2})-(\d{2})/);return m?(+m[3])+' '+ID[+m[2]-1]:''};
 const sc=(r,k,s,w)=>{const v=r[k+'_'],t=tg(r,k);return v==null||t==null?`<td class="n mu ${w}">–</td>`:`<td class="n ${w} ${v+1e-9>=t?'g':'r'}">${fv(v,s)}</td>`};
 const gOps=g=>u(g.map(ops)).join(', ');
 let EXP_PJ=new Set();
-function ptab(rows,T){const ms=MET.filter(m=>T[m[0]]!=null),detAll=$('#sd').checked,pr=Object.values(grp(rows,r=>r.co+'|'+r.pj)).map(g=>({g,s:stats(g)})).sort((a,b)=>a.g[0].co.localeCompare(b.g[0].co,'id')||a.g[0].pj.localeCompare(b.g[0].pj,'id'));
+function ptab(rows,T){const ms=MET.filter(m=>T[m[0]]!=null),detAll=$('#sd').checked,pr=Object.values(grp(rows,r=>cKey(r))).map(g=>({g,s:stats(g)})).sort((a,b)=>a.g[0].co.localeCompare(b.g[0].co,'id')||a.g[0].pj.localeCompare(b.g[0].pj,'id'));
 const cg='<colgroup><col><col><col><col><col>'+ms.map(m=>`<col class="${m[4]}">`).join('')+'</colgroup>';
-return cg+'<thead><tr><th>Client</th><th>Project</th><th><span class="scr-only">PIC Ops</span><span class="prt-only">PIC</span></th><th>Class Manager</th><th class="n">Total Sessions</th>'+ms.map(m=>`<th class="n ${m[4]}">${m[1]}</th>`).join('')+'</tr></thead>'+(pr.length?pr.map(o=>{const f=o.g[0],pKey=f.co+'¦'+f.pj,isOpen=detAll||EXP_PJ.has(pKey),picStr=gOps(o.g),cm=u(o.g.map(r=>r.mn).filter(x=>x&&x!='-')),cmStr=cm.join(', '),nu=o.g.filter(r=>!rated(r)).length,pjTip=f.pj+(nu?' · '+nu+' unrated':'')+' (klik untuk rincian sesi)';
+return cg+'<thead><tr><th>Client</th><th>Project</th><th><span class="scr-only">PIC Ops</span><span class="prt-only">PIC</span></th><th>Class Manager</th><th class="n" title="Total Sessions">Sessions</th>'+ms.map(m=>`<th class="n ${m[4]}">${m[1]}</th>`).join('')+'</tr></thead>'+(pr.length?pr.map(o=>{const f=o.g[0],pKey=f.co+'¦'+f.pj,isOpen=detAll||EXP_PJ.has(pKey),picStr=gOps(o.g),cm=u(o.g.map(r=>r.mn).filter(x=>x&&x!='-')),cmStr=cm.join(', '),nu=o.g.filter(r=>!ratedAny(r)).length,pjTip=f.pj+(nu?' · '+nu+' unrated':'')+' (klik untuk rincian sesi)';
 let h=`<tbody class="pg-grp"><tr class="pj-hd${isOpen?' exp':''}" data-pjk="${ea(pKey)}" style="border-top:2px solid rgba(128,128,128,.35)"><td title="${ea(f.co)}"><span class="pj-tgl noprint" aria-hidden="true">▸</span><b>${esc(f.co)}</b></td><td title="${ea(pjTip)}">${esc(f.pj)}${nu?` <span class="mu">· ${nu} unrated</span>`:''}</td><td title="${ea(picStr)}">${esc(picStr)}</td><td title="${ea(cmStr)}">${esc(cmStr)}</td><td class="n">${o.g.length}</td>`+ms.map(m=>cs(o.s[m[0]],m[2],m[3],m[4],T[m[0]])).join('')+'</tr>';
-if(isOpen)h+=[...o.g].sort((a,b)=>so(a)-so(b)||(a.date||'').localeCompare(b.date||'')).map(r=>{const sLbl=`Sesi ${r.ses||'?'}${fd(r.date)?' · '+fd(r.date):''}${r.sc?' · '+r.sc:''}`,mnLbl=r.mn&&r.mn!='-'?r.mn:'';return `<tr class="sub-row"><td></td><td class="mu" title="${ea(sLbl)}">↳ ${esc(sLbl)}</td><td></td><td class="mu" title="${ea(mnLbl)}">${esc(mnLbl)}</td><td></td>`+(rated(r)?ms.map(m=>sc(r,m[0],m[2],m[4])).join(''):`<td class="mu" colspan="${ms.length}"><i>Belum ada data rating (sesi belum berjalan atau nilai belum diinput)</i></td>`)+'</tr>'}).join('');
+if(isOpen)h+=[...o.g].sort((a,b)=>so(a)-so(b)||(a.date||'').localeCompare(b.date||'')||a._row-b._row).map(r=>{const noId=!r.ses&&!fd(r.date),sLbl=`Sesi ${r.ses||'?'}${fd(r.date)?' · '+fd(r.date):''}${noId?' · Baris #'+r._row:''}${r.sc?' · '+r.sc:''}`,mnLbl=r.mn&&r.mn!='-'?r.mn:'';return `<tr class="sub-row"><td></td><td class="mu" title="${ea(sLbl)}">↳ ${esc(sLbl)}</td><td></td><td class="mu" title="${ea(mnLbl)}">${esc(mnLbl)}</td><td></td>`+(ratedAny(r)?ms.map(m=>sc(r,m[0],m[2],m[4])).join(''):`<td class="mu" colspan="${ms.length}"><i>Belum ada data rating (sesi belum berjalan atau nilai belum diinput)</i></td>`)+'</tr>'}).join('');
 return h+'</tbody>'}).join(''):`<tbody><tr><td colspan="${5+ms.length}" class="mu">${$('#q').value.trim()?'Tidak ditemukan client atau project yang sesuai pencarian.':'Tidak ada data project pada periode dan filter ini.'}</td></tr></tbody>`)}
-const attn=rows=>{const L=[];TY.forEach(([nm,T,fn])=>Object.values(grp(rows.filter(fn),r=>r.co+'|'+r.pj)).forEach(g=>{const x=stats(g),bad=MET.filter(k=>T[k[0]]!=null&&x[k[0]].n>x[k[0]].a),hasSes=bad.some(k=>k[3]=='s'),m=bad.map(k=>({n:k[1],v:k[3]=='s'?x[k[0]].a+'/'+x[k[0]].n+' sesi':fv(x[k[0]].avg,k[2])+' (target '+fv(T[k[0]],k[2])+')'}));if(m.length)L.push({f:g[0],pic:gOps(g),nm,m,hasSes})}));
+const attn=rows=>{const L=[];TY.forEach(([nm,T,fn])=>Object.values(grp(rows.filter(fn),r=>cKey(r))).forEach(g=>{const x=stats(g),bad=MET.filter(k=>T[k[0]]!=null&&x[k[0]].n>x[k[0]].a),hasSes=bad.some(k=>k[3]=='s'),m=bad.map(k=>({n:k[1],v:k[3]=='s'?x[k[0]].a+'/'+x[k[0]].n+' sesi':fv(x[k[0]].avg,k[2])+' (target '+fv(T[k[0]],k[2])+')'}));if(m.length)L.push({f:g[0],pic:gOps(g),nm,m,hasSes})}));
 L.sort((a,b)=>b.m.length-a.m.length||a.f.co.localeCompare(b.f.co,'id'));
 $('#at-sum').textContent=L.length?'· '+L.length+' projects':'· All achieved';return L.length?'<table><thead><tr><th>Client</th><th>Project</th><th><span class="scr-only">PIC Ops</span><span class="prt-only">PIC</span></th><th>Type</th><th>Unachieved Metrics</th></tr></thead><tbody>'+L.map(o=>`<tr><td title="${ea(o.f.co)}"><b>${esc(o.f.co)}</b></td><td title="${ea(o.f.pj)}"><button type="button" class="at-link scr-only" data-co="${ea(o.f.co)}" data-pj="${ea(o.f.pj)}" data-ses="${o.hasSes?'1':'0'}" title="${o.hasSes?'Filter & lihat Session Score Chart untuk project ini':'Filter & lihat Rating Details untuk project ini'}"><span>${esc(o.f.pj)}</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></button><span class="prt-only">${esc(o.f.pj)}</span></td><td title="${ea(o.pic)}">${esc(o.pic)}</td><td>${o.nm=='Pro Bono'?'Pro Bono':'CT'}</td><td><span class="scr-only">${o.m.map(x=>esc(x.n+' '+x.v)).join(' · ')}</span><span class="prt-only at-list">${o.m.map(x=>`<span class="at-it"><span class="at-m">${esc(x.n)}</span><span class="at-v">${esc(x.v)}</span></span>`).join('')}</span></td></tr>`).join('')+'</tbody></table>':'<div class="mu">Seluruh project pada periode dan filter ini sudah mencapai target (achieved).</div>'};
 let CLOSED_SEC=[];const updPh=()=>{$('#ph1').innerHTML=$('#fa').innerHTML+'<br>Dicetak '+new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'})};window.onbeforeprint=()=>{updPh();T0=document.title;document.title=PT;CLOSED_SEC=[...document.querySelectorAll('details.sec')].filter(d=>!d.open);CLOSED_SEC.forEach(d=>d.open=true)};window.onafterprint=()=>{if(T0)document.title=T0;CLOSED_SEC.forEach(d=>d.open=false);CLOSED_SEC=[]};
@@ -501,7 +608,7 @@ if(ACTIVE_SEC){
 const curEl=document.getElementById(ACTIVE_SEC);
 if(curEl&&curEl.offsetParent!==null){
 const r=curEl.getBoundingClientRect();
-if(r.bottom>130&&r.top<window.innerHeight-40)return{el:curEl,top:r.top};
+if(r.bottom>120&&r.top<window.innerHeight-10)return{el:curEl,top:r.top};
 }
 }
 let best=null;
@@ -513,9 +620,9 @@ const anc=keepAnchor?getAnchorSec():null;
 updFState();const qs=($('#q').value||'').trim().toLowerCase(),qf=r=>!qs||(r.co+' '+r.pj).toLowerCase().includes(qs),p=$('#pd').value,rows=fr(pmonths(p)),pp=prevp(p),prow=pp?fr(pmonths(pp)):null,y=$('#yr').value;
 const ctR=rows.filter(r=>!pb(r)),pbR=rows.filter(pb);
 const coAll=new Set(rows.map(r=>r.co)).size,coCt=new Set(ctR.map(r=>r.co)).size,coPb=new Set(pbR.map(r=>r.co)).size,coBoth=coCt+coPb-coAll;
-const pjAll=new Set(rows.map(r=>r.co+'|'+r.pj)).size,pjPb=new Set(pbR.map(r=>r.co+'|'+r.pj)).size,pjCt=pjAll-pjPb;
-const unrated=rows.filter(r=>!rated(r)).length,noSc=rows.filter(r=>!r.sc).length;
-const scCard=nm=>{const sub=rows.filter(r=>r.sc==nm),pCnt=new Set(sub.map(r=>r.co+'|'+r.pj)).size,pct=rows.length?(100*sub.length/rows.length).toFixed(0):0;return `<div class="k"><span class="mu">${nm} Sessions</span><b>${sub.length}</b><div class="mu">${pct}% dari total · ${pCnt} project</div></div>`};
+const pjAll=new Set(rows.map(r=>cKey(r))).size,pjPb=new Set(pbR.map(r=>cKey(r))).size,pjCt=pjAll-pjPb;
+const unrated=rows.filter(r=>!ratedAny(r)).length,noSc=rows.filter(r=>!r.sc).length;
+const scCard=nm=>{const sub=rows.filter(r=>r.sc==nm),pCnt=new Set(sub.map(r=>cKey(r))).size,pct=rows.length?(100*sub.length/rows.length).toFixed(0):0;return `<div class="k"><span class="mu">${nm} Sessions</span><b>${sub.length}</b><div class="mu">${pct}% dari total · ${pCnt} project</div></div>`};
 $('#kp').innerHTML=`<div class="k"><span class="mu">Total Sessions</span><b>${rows.length}</b><div class="mu">${ctR.length} Corporate · ${pbR.length} Pro Bono${unrated?' · '+unrated+' unrated':''}${noSc?' · '+noSc+' tanpa scheme':''}</div></div>`+
 `<div class="k"><span class="mu">Total Companies</span><b>${coAll}</b><div class="mu">${coCt} Corporate · ${coPb} Pro Bono${coBoth>0?' ('+coBoth+' di keduanya)':''}</div></div>`+
 `<div class="k"><span class="mu">Total Projects</span><b>${pjAll}</b><div class="mu">${pjCt} Corporate · ${pjPb} Pro Bono</div></div>`+
@@ -523,14 +630,14 @@ scCard('Offline')+scCard('Online')+scCard('Hybrid');
 TY.forEach(([nm,T,fn,i])=>{const q=rows.filter(fn),S=stats(q),P=prow?stats(prow.filter(fn)):null;
 $('#c'+i).innerHTML=q.length?MET.filter(m=>T[m[0]]!=null).map(m=>card(m,S,P,T,p[0]=='q'?'kuartal lalu':'bulan lalu')).join(''):'<div class="mu">Tidak ada data sesi untuk periode dan filter yang dipilih.</div>'});
 const cols=[];for(let m=1;m<=12;m++)cols.push([ID[m-1],'m:'+y+'-'+String(m).padStart(2,'0')]);for(let q=1;q<=4;q++)cols.push(['Q'+q,'q:'+y+'-'+q]);cols.push(['YTD','y:'+y]);
-const cpf=$('#fc').value||$('#fj').value,act=new Set(rows.map(r=>r.co+'|'+r.pj)),sl=i=>{const e=$('#'+i);return e.value?e.selectedOptions[0].textContent:null},fl=[['PIC Ops','fo'],['Company','fc'],['Project','fj'],['Scheme','fs']].filter(x=>sl(x[1])).map(x=>x[0]+': <b>'+esc(sl(x[1]))+'</b>'),pl=sl('pd');
-$('#fa').innerHTML='Periode aktif: <b>'+esc(pl)+'</b>'+(fl.length?' · '+fl.join(' · '):' · Semua PIC Ops, Company, Project & Scheme');
-if(qs)$('#fa').innerHTML+=' · Pencarian Rating Details: <b>'+esc(qs)+'</b>';PT=('Product Operations B2B Report - '+pl+fl.map(x=>' - '+x.replace(/<[^>]+>/g,'')).join('')).replace(/[:\/\\]/g,'');
+const cpf=$('#fc').value||$('#fj').value,act=new Set(rows.map(r=>cKey(r))),sl=i=>{const e=$('#'+i);return e.value?e.selectedOptions[0].textContent:null},fl=[['PIC Ops','fo'],['Company','fc'],['Project','fj'],['Scheme','fs']].filter(x=>sl(x[1])).map(x=>x[0]+': <b>'+esc(sl(x[1]))+'</b>'),pl=sl('pd');
+const faHtml='Periode aktif: <b>'+esc(pl)+'</b>'+(fl.length?' · '+fl.join(' · '):' (Semua Filter)')+(qs?' · Cari: <b>'+esc(qs)+'</b>':'');
+$('#fa').innerHTML=faHtml;$('#fa').title=faHtml.replace(/<[^>]+>/g,'');PT=('Product Operations B2B Report - '+pl+fl.map(x=>' - '+x.replace(/<[^>]+>/g,'')).join('')).replace(/[:\/\\]/g,'');
 
-const CR=cols.map(c=>{const r=fr(pmonths(c[1]));return cpf?r.filter(x=>act.has(x.co+'|'+x.pj)):r});
+const CR=cols.map(c=>{const r=fr(pmonths(c[1]));return cpf?r.filter(x=>act.has(cKey(x))):r});
 $('#mx').innerHTML='<tr><th>Metric</th>'+cols.map(c=>`<th class="n">${c[0]}</th>`).join('')+'</tr>'+TY.map(([nm,T,fn])=>{const CQ=CR.map(r=>r.filter(fn)),CS=CQ.map(q=>q.length?stats(q):null);
-return `<tr class="tm"><td colspan="${cols.length+1}">${nm}</td></tr><tr><td class="mu">Total sessions</td>`+CQ.map(q=>`<td class="n mu">${q.length||'–'}</td>`).join('')+'</tr>'+MET.filter(m=>T[m[0]]!=null).map(([k,l,s])=>`<tr><td>${l}</td>`+CS.map(c=>c&&c[k].n?`<td class="n ${st3(c[k],T[k])}"><span class="tr-val">${fv(c[k].avg,s)}</span><br><span class="mu">${c[k].a}/${c[k].n} · ${c[k].p.toFixed(0)}%</span></td>`:'<td class="n">–</td>').join('')+'</tr>').join('')}).join('');
-$('#pg').innerHTML=ptab(rows.filter(r=>!pb(r)&&qf(r)),CORP);$('#pp').innerHTML=ptab(rows.filter(r=>pb(r)&&qf(r)),PB);$('#at').innerHTML=attn(rows);qChartSec();chartSec(rows);updPh();syncScroll();
+return `<tr class="tm"><td colspan="${cols.length+1}"><span class="tm-lbl">${nm}</span></td></tr><tr><td class="mu">Total sessions</td>`+CQ.map(q=>`<td class="n mu">${q.length||'–'}</td>`).join('')+'</tr>'+MET.filter(m=>T[m[0]]!=null).map(([k,l,s])=>`<tr><td>${l}</td>`+CS.map(c=>c&&c[k].n?`<td class="n ${st3(c[k],T[k])}"><span class="tr-val">${fv(c[k].avg,s)}</span><br><span class="mu">${c[k].a}/${c[k].n} · ${c[k].p.toFixed(0)}%</span></td>`:'<td class="n">–</td>').join('')+'</tr>').join('')}).join('');
+$('#pg').innerHTML=ptab(rows.filter(r=>!pb(r)&&qf(r)),CORP);$('#pp').innerHTML=ptab(rows.filter(r=>pb(r)&&qf(r)),PB);$('#at').innerHTML=attn(rows);qChartSec();chartSec(rows);updPh();syncScroll();if(window._cleanTip)window._cleanTip();
 if(anc&&anc.el&&anc.el.offsetParent!==null){
 const newTop=anc.el.getBoundingClientRect().top,diff=newTop-anc.top;
 if(Math.abs(diff)>1){LOCK_SPY=Date.now()+300;window.scrollBy({top:diff,behavior:'instant'})}
@@ -541,10 +648,10 @@ function chartSec(rows){
 const zoom=$('#ys').value=='z',ctp=$('#ct').value,MS=MET.filter(m=>m[3]=='s');
 $('#ct-p').textContent=ctp=='ct'?'· Corporate Training (CT)':ctp=='pb'?'· Pro Bono':'';
 const frows=rows.filter(r=>!ctp||(ctp=='ct'?!pb(r):pb(r)));
-const gs=Object.values(grp(frows,r=>r.co+'|'+r.pj)).sort((a,b)=>Number(pb(a[0]))-Number(pb(b[0]))||a[0].co.localeCompare(b[0].co,'id')||a[0].pj.localeCompare(b[0].pj,'id'));
+const gs=Object.values(grp(frows,r=>cKey(r))).sort((a,b)=>Number(pb(a[0]))-Number(pb(b[0]))||a[0].co.localeCompare(b[0].co,'id')||a[0].pj.localeCompare(b[0].pj,'id'));
 const H=170,L=30,R=8,Tp=16,B=30,ph=H-Tp-B;
 const html=gs.map(g=>{const f=g[0],T=pb(f)?PB:CORP,ms=MS.filter(m=>T[m[0]]!=null),S=stats(g);
-const ss=g.filter(rated).sort((a,b)=>so(a)-so(b)||(a.date||'').localeCompare(b.date||'')),nu=g.length-ss.length;
+const ss=g.filter(ratedSes).sort((a,b)=>so(a)-so(b)||(a.date||'').localeCompare(b.date||'')||a._row-b._row),nu=g.length-ss.length;
 let ymin=0;if(zoom&&ss.length){const vs=[];ms.forEach(m=>{vs.push(T[m[0]]);ss.forEach(r=>{if(r[m[0]+'_']!=null)vs.push(r[m[0]+'_'])})});ymin=Math.max(0,Math.floor((Math.min(...vs)-.15)*2)/2)}
 const btns=ss.length?`<div class="cb-act noprint"><button type="button" class="cb-btn" data-act="copy" title="Salin gambar grafik ke clipboard (langsung Ctrl+V di PowerPoint / Google Slides)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy Image</span></button><button type="button" class="cb-btn" data-act="png" title="Unduh gambar grafik resolusi tinggi (.png)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>PNG</span></button></div>`:'';
 const fullTitle=`${f.co} – ${f.pj} · ${pb(f)?'Pro Bono':'Corporate Training'} · PIC ${gOps(g)} · ${ss.length} sesi dinilai${nu?' · '+nu+' unrated (tidak ditampilkan)':''}`;
@@ -720,16 +827,15 @@ setTimeout(()=>{btn.classList.remove('err');sp.textContent=orig},2200);
 }
 });
 });
-
 function syncScroll(){document.querySelectorAll('.sc-top').forEach(top=>{const box=document.getElementById(top.dataset.for);if(!box)return;const w=box.scrollWidth,cw=box.clientWidth;if(w>cw+1){top.hidden=false;const cwS=cw+'px',wS=w+'px';if(top.style.width!==cwS)top.style.width=cwS;if(top.firstElementChild.style.width!==wS)top.firstElementChild.style.width=wS;if(Math.abs(top.scrollLeft-box.scrollLeft)>0.5)top.scrollLeft=box.scrollLeft}else{top.hidden=true}})}
 document.querySelectorAll('.sc-top').forEach(top=>{const box=document.getElementById(top.dataset.for);if(!box)return;let skipTop=false,skipBox=false;top.addEventListener('scroll',()=>{if(skipTop){skipTop=false;return}if(Math.abs(box.scrollLeft-top.scrollLeft)>0.5){skipBox=true;box.scrollLeft=top.scrollLeft}},{passive:true});box.addEventListener('scroll',()=>{if(skipBox){skipBox=false;return}if(Math.abs(top.scrollLeft-box.scrollLeft)>0.5){skipTop=true;top.scrollLeft=box.scrollLeft}},{passive:true});if(window.ResizeObserver)new ResizeObserver(syncScroll).observe(box)});
 window.addEventListener('resize',syncScroll,{passive:true});
-function resetAll(){try{localStorage.removeItem(SK)}catch(e){}JUMP_Y=null;ACTIVE_SEC=null;R=[];MO=[];YRS=[];$('#app').hidden=true;$('#empty').hidden=false;if($('#empty-err'))$('#empty-err').hidden=true;$('#up').hidden=true;$('#up').open=false;EXP_PJ.clear();document.querySelectorAll('details.sec').forEach(d=>d.open=(d.id!=='s-dq'&&d.id!=='s-gd'));$('#f').value='';$('#q').value='';$('#qc').hidden=true;$('#sd').checked=false;$('#ct').value='';$('#ys').value='z';$('#warn').hidden=true;$('#note').textContent='';$('#msg').textContent='· Menunggu file CSV';srcN(null)}
-$('#pd').onchange=()=>{const pv=$('#pd').value;if(pv.startsWith('q:'))$('#qq').value=pv.slice(2);else if(pv.startsWith('m:')){const m=pv.slice(2),qv=m.slice(0,4)+'-'+Math.ceil(+m.slice(5)/3);if([...$('#qq').options].some(o=>o.value==qv))$('#qq').value=qv}fillF(0);draw(true)};$('#fo').onchange=()=>{fillF(1);draw(true)};$('#fc').onchange=()=>{fillF(2);draw(true)};$('#fj').onchange=()=>{fillF(3);draw(true)};$('#fs').onchange=()=>{$('#note').textContent='';draw(true)};$('#yr').onchange=()=>draw(true);$('#sd').onchange=()=>{if(!$('#sd').checked)EXP_PJ.clear();draw(true)};
+function resetAll(){try{localStorage.removeItem(SK)}catch(e){}JUMP_AT=false;ACTIVE_SEC='kp';document.querySelectorAll('.nav a[href^="#"]').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#kp'));R=[];MO=[];YRS=[];DEF_PD='';$('#app').hidden=true;$('#empty').hidden=false;if($('#empty-err'))$('#empty-err').hidden=true;$('#up').hidden=true;$('#up').open=false;EXP_PJ.clear();document.querySelectorAll('details.sec').forEach(d=>d.open=(d.id!=='s-dq'&&d.id!=='s-gd'));$('#f').value='';$('#q').value='';$('#qc').hidden=true;$('#sd').checked=false;$('#ct').value='';$('#ys').value='z';$('#warn').hidden=true;$('#note').textContent='';$('#msg').textContent='· Menunggu file CSV';srcN(null)}
+$('#pd').onchange=()=>{const pv=$('#pd').value,py=pv.slice(2,6);if([...$('#yr').options].some(o=>o.value==py))$('#yr').value=py;if(pv.startsWith('q:'))$('#qq').value=pv.slice(2);else if(pv.startsWith('m:')){const m=pv.slice(2),qv=m.slice(0,4)+'-'+Math.ceil(+m.slice(5)/3);if([...$('#qq').options].some(o=>o.value==qv))$('#qq').value=qv}fillF(0);draw(true)};$('#fo').onchange=()=>{fillF(1);draw(true)};$('#fc').onchange=()=>{fillF(2);draw(true)};$('#fj').onchange=()=>{fillF(3);draw(true)};$('#fs').onchange=()=>{$('#note').textContent='';draw(true)};$('#yr').onchange=()=>draw(true);$('#sd').onchange=()=>{if(!$('#sd').checked)EXP_PJ.clear();draw(true)};
 ['#pg','#pp'].forEach(sel=>$(sel).addEventListener('click',e=>{const tr=e.target.closest('tr.pj-hd');if(!tr)return;const k=tr.dataset.pjk;if($('#sd').checked){$('#sd').checked=false;EXP_PJ.clear();EXP_PJ.add(k)}else if(EXP_PJ.has(k)){EXP_PJ.delete(k)}else{EXP_PJ.add(k)}draw(true)}));
-let JUMP_Y=null;
-$('#at').addEventListener('click',e=>{const btn=e.target.closest('.at-link');if(!btn)return;const co=btn.dataset.co,pj=btn.dataset.pj,key=co+'¦'+pj,toSes=btn.dataset.ses==='1';JUMP_Y=window.scrollY;$('#fo').value='';fillF(1);if([...$('#fc').options].some(o=>o.value===co)){$('#fc').value=co;fillF(2)}if([...$('#fj').options].some(o=>o.value===key)){$('#fj').value=key;fillF(3)}EXP_PJ.add(key);const tgtId=toSes?'s-ch':'s-dt';ACTIVE_SEC=tgtId;LOCK_SPY=Date.now()+700;draw(false);const tgt=document.getElementById(tgtId);if(tgt){tgt.open=true;tgt.scrollIntoView({behavior:'smooth',block:'start'})}});
-(()=>{const links=[...document.querySelectorAll('.nav a[href^="#"]')];const targets=links.map(a=>({a,el:$(a.getAttribute('href'))})).filter(x=>x.el);let spyRaf=0;function updSpy(){spyRaf=0;if($('#app').hidden||Date.now()<LOCK_SPY)return;const topLine=175;let cur=targets[0];for(const t of targets){const r=t.el.getBoundingClientRect();if(r.width===0&&r.height===0)continue;if(r.top<=topLine)cur=t}if(cur){ACTIVE_SEC=cur.el.id;links.forEach(a=>a.classList.toggle('act',a===cur.a))}}window.addEventListener('scroll',()=>{if(!spyRaf)spyRaf=requestAnimationFrame(updSpy)},{passive:true});window.addEventListener('resize',()=>{if(!spyRaf)spyRaf=requestAnimationFrame(updSpy)},{passive:true})})();$('#qq').onchange=()=>draw(true);$('#ct').onchange=()=>draw(true);$('#ys').onchange=()=>draw(true);$('#rs').onclick=()=>{const retY=JUMP_Y;JUMP_Y=null;['fo','fc','fj','fs','ct'].forEach(i=>$('#'+i).value='');$('#q').value='';$('#qc').hidden=true;fillF(0);draw(retY==null);if(retY!=null)window.scrollTo({top:retY,behavior:'smooth'})};
+let JUMP_AT=false;
+$('#at').addEventListener('click',e=>{const btn=e.target.closest('.at-link');if(!btn)return;const co=btn.dataset.co,pj=btn.dataset.pj,key=co+'¦'+pj,toSes=btn.dataset.ses==='1';JUMP_AT=true;$('#q').value='';$('#qc').hidden=true;$('#ct').value='';$('#fo').value='';fillF(1);if([...$('#fc').options].some(o=>o.value===co)){$('#fc').value=co;fillF(2)}if([...$('#fj').options].some(o=>o.value===key)){$('#fj').value=key;fillF(3)}EXP_PJ.add(key);const tgtId=toSes?'s-ch':'s-dt',tgt=document.getElementById(tgtId);if(tgt&&tgt.tagName==='DETAILS')tgt.open=true;ACTIVE_SEC=tgtId;LOCK_SPY=Date.now()+1100;draw(false);document.querySelectorAll('.nav a[href^="#"]').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+tgtId));if(tgt)requestAnimationFrame(()=>tgt.scrollIntoView({behavior:'smooth',block:'start'}))});
+(()=>{const links=[...document.querySelectorAll('.nav a[href^="#"]')];const targets=links.map(a=>({a,el:$(a.getAttribute('href'))})).filter(x=>x.el);let spyRaf=0;function updSpy(){spyRaf=0;if($('#app').hidden||Date.now()<LOCK_SPY)return;const vis=targets.filter(t=>{const r=t.el.getBoundingClientRect();return r.width>0||r.height>0});if(!vis.length)return;const atBottom=window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-24;if(atBottom){const curEl=ACTIVE_SEC?document.getElementById(ACTIVE_SEC):null;const curInVis=curEl&&vis.some(t=>t.el===curEl&&curEl.getBoundingClientRect().top<window.innerHeight-20);const pick=curInVis?vis.find(t=>t.el===curEl):vis[vis.length-1];if(pick){ACTIVE_SEC=pick.el.id;links.forEach(a=>a.classList.toggle('act',a===pick.a))}return}const topLine=window.innerWidth<900?48:175;let cur=vis[0];for(const t of vis){if(t.el.getBoundingClientRect().top<=topLine)cur=t}if(cur){ACTIVE_SEC=cur.el.id;links.forEach(a=>a.classList.toggle('act',a===cur.a))}}window.addEventListener('scroll',()=>{if(!spyRaf)spyRaf=requestAnimationFrame(updSpy)},{passive:true});window.addEventListener('resize',()=>{if(!spyRaf)spyRaf=requestAnimationFrame(updSpy)},{passive:true})})();$('#qq').onchange=()=>draw(true);$('#ct').onchange=()=>draw(true);$('#ys').onchange=()=>draw(true);$('#rs').onclick=()=>{const backAt=JUMP_AT;JUMP_AT=false;setDefPd();['fo','fc','fj','fs','ct'].forEach(i=>$('#'+i).value='');$('#q').value='';$('#qc').hidden=true;fillF(0);if(backAt){const atEl=document.getElementById('s-at');if(atEl&&atEl.tagName==='DETAILS')atEl.open=true;ACTIVE_SEC='s-at';LOCK_SPY=Date.now()+1100;draw(false);document.querySelectorAll('.nav a[href^="#"]').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#s-at'));if(atEl)requestAnimationFrame(()=>atEl.scrollIntoView({behavior:'smooth',block:'start'}))}else{draw(true)}};
 const saveD=(t,n)=>{srcN({n,d:new Date().toISOString()})};
 const srcN=S=>{setTimeout(updPh,0);$('#src').textContent=S?'Data source: “'+S.n+'” · Loaded '+new Date(S.d).toLocaleString('id-ID',{dateStyle:'medium',timeStyle:'short'})+' (otomatis di-reset saat halaman di-refresh)':'Data source: belum ada file yang dimuat';const fnEl=$('#fn-lbl');if(fnEl){fnEl.textContent=S?S.n:'Belum ada file';fnEl.title=S?S.n:''}};$('#fb-up').onclick=()=>$('#f').click();
 const handleErr=z=>{const em='Gagal membaca file: '+z.message;$('#msg').textContent='· '+em;if($('#empty-err')){$('#empty-err').textContent=em;$('#empty-err').hidden=false}};
@@ -799,8 +905,10 @@ w.wrap.classList.add('open');w.btn.setAttribute('aria-expanded','true');
 OPEN_SEL={sel,wrap:w.wrap,btn:w.btn,pop};
 const popRect=pop.getBoundingClientRect(),spaceBelow=window.innerHeight-rect.bottom-10,spaceAbove=rect.top-10;
 const openUp=spaceBelow<Math.min(popRect.height,240)&&spaceAbove>spaceBelow;
+if(window.innerWidth>640){
 let left=rect.left;if(left+popRect.width>window.innerWidth-12)left=Math.max(12,window.innerWidth-popRect.width-12);
 pop.style.left=left+'px';
+}
 if(openUp){pop.style.bottom=(window.innerHeight-rect.top+5)+'px'}else{pop.style.top=(rect.bottom+5)+'px'}
 const activeRow=list.querySelector('.sel');if(activeRow)activeRow.scrollIntoView({block:'nearest'});
 const onKey=e=>{
@@ -831,9 +939,10 @@ new MutationObserver(()=>syncSel(sel)).observe(sel,{childList:true,subtree:true,
 syncSel(sel);
 }
 document.addEventListener('mousedown',e=>{if(OPEN_SEL&&!OPEN_SEL.pop.contains(e.target)&&!OPEN_SEL.wrap.contains(e.target))closeSel(false)});
+window.addEventListener('scroll',e=>{if(OPEN_SEL&&(!e.target||!OPEN_SEL.pop.contains(e.target)))closeSel(false)},{capture:true,passive:true});
 let LW=window.innerWidth;window.addEventListener('resize',()=>{if(window.innerWidth!==LW){LW=window.innerWidth;closeSel(false)}},{passive:true});
-document.querySelectorAll('details.sec').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)syncScroll()}));
-document.querySelectorAll('.nav a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{const id=a.getAttribute('href').slice(1),el=document.getElementById(id);if(el&&el.tagName==='DETAILS')el.open=true;ACTIVE_SEC=id;LOCK_SPY=Date.now()+600;document.querySelectorAll('.nav a[href^="#"]').forEach(x=>x.classList.toggle('act',x===a))}));
+document.querySelectorAll('details.sec').forEach(d=>d.addEventListener('toggle',()=>{if($('#app').hidden)return;if(d.open){ACTIVE_SEC=d.id;LOCK_SPY=Date.now()+400;document.querySelectorAll('.nav a[href^="#"]').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+d.id));syncScroll()}else if(ACTIVE_SEC===d.id){const anc=getAnchorSec();if(anc&&anc.el){ACTIVE_SEC=anc.el.id;document.querySelectorAll('.nav a[href^="#"]').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+ACTIVE_SEC))}}}));
+document.querySelectorAll('.nav a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{const id=a.getAttribute('href').slice(1),el=document.getElementById(id);if(el&&el.tagName==='DETAILS')el.open=true;ACTIVE_SEC=id;LOCK_SPY=Date.now()+900;document.querySelectorAll('.nav a[href^="#"]').forEach(x=>x.classList.toggle('act',x===a))}));
 ['#pd','#fo','#fc','#fj','#fs'].forEach(id=>initSel($(id),false));
 ['#yr','#qq','#ct','#ys'].forEach(id=>initSel($(id),true));
 // ===== Unified Custom Tooltip Engine =====
@@ -868,18 +977,23 @@ tip.textContent=raw;
 return true;
 }
 function hide(){if(!cur)return;cur=null;tip.classList.remove('show')}
-function show(el,x,y){
+function show(el,x,y,withClose){
 mx=x;my=y;
 if(el.hasAttribute('title')){const t=el.getAttribute('title');if(t){el.dataset.origTitle=t;el.removeAttribute('title')}}
 const dt=el.getAttribute('data-tip'),ot=el.dataset.origTitle;
 const raw=dt||ot;if(!raw){hide();return}
-if(cur!==el){cur=el;renderTip(raw,!!dt);tip.classList.add('show')}
+if(cur!==el){
+cur=el;renderTip(raw,!!dt);
+if(withClose&&!tip.querySelector('.ui-tip-x'))tip.insertAdjacentHTML('afterbegin','<button type="button" class="ui-tip-x" aria-label="Tutup">&times;</button>');
+tip.classList.add('show');
+}
 if(!raf)raf=requestAnimationFrame(()=>{raf=0;pos()});
 }
+const isTouchDevice=()=>window.matchMedia&&window.matchMedia('(pointer:coarse)').matches;
 document.addEventListener('mouseover',e=>{
+if(isTouchDevice())return;
 const el=e.target&&e.target.closest?e.target.closest('[data-tip],[title],[data-orig-title]'):null;
 if(!el){hide();return}
-// For truncated cells (.cb-title or table td with text-overflow), only show title tooltip if actually truncated or has extra info
 if(!el.hasAttribute('data-tip')&&(el.matches('td,.cb-title,.csel-opt'))){
 const tEl=el.matches('.csel-opt')?el.querySelector('span'):el;
 if(tEl&&tEl.scrollWidth<=tEl.clientWidth+1){
@@ -887,13 +1001,25 @@ if(el.hasAttribute('title')){el.dataset.origTitle=el.getAttribute('title');el.re
 hide();return;
 }
 }
-show(el,e.clientX,e.clientY);
+show(el,e.clientX,e.clientY,false);
 },{passive:true});
-document.addEventListener('mousemove',e=>{if(cur){mx=e.clientX;my=e.clientY;if(!raf)raf=requestAnimationFrame(()=>{raf=0;pos()})}},{passive:true});
-document.addEventListener('mouseout',e=>{if(cur&&(!e.relatedTarget||!cur.contains(e.relatedTarget)))hide()},{passive:true});
+document.addEventListener('mousemove',e=>{if(!isTouchDevice()&&cur){mx=e.clientX;my=e.clientY;if(!raf)raf=requestAnimationFrame(()=>{raf=0;pos()})}},{passive:true});
+document.addEventListener('mouseout',e=>{if(!isTouchDevice()&&cur&&(!e.relatedTarget||!cur.contains(e.relatedTarget)))hide()},{passive:true});
+document.addEventListener('click',e=>{
+if(e.target.closest('.ui-tip-x')){hide();return}
+const el=e.target&&e.target.closest?e.target.closest('[data-tip]'):null;
+if(el){
+const r=el.getBoundingClientRect();
+show(el,r.left+r.width/2,r.top,true);
+return;
+}
+if(cur&&!tip.contains(e.target))hide();
+});
 window.addEventListener('scroll',hide,{capture:true,passive:true});
-window.addEventListener('mousedown',hide,{passive:true});
+window.addEventListener('mousedown',e=>{if(!isTouchDevice()&&!tip.contains(e.target))hide()},{passive:true});
 window.addEventListener('keydown',hide,{passive:true});
+window._cleanTip=()=>{if(cur&&!document.body.contains(cur))hide()};
 })();
+
 resetAll();
 </script></body></html>
